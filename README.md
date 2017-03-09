@@ -29,6 +29,7 @@ Install docker, docker-machine and docker-compose
 3) Run docker compose to launch Cluster Sharded App and Cassandra which is used for persistence
 
 > docker-compose up -d --no-recreate
+
 > docker-compose scale kafka=2 cassandra-node=2
 
 4) Connect to Cassandra and view persisted messages
