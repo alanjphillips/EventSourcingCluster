@@ -19,6 +19,7 @@ Install docker, docker-machine and docker-compose
 1) Connect to 'default' machine, see docker docs on how to create machine in virtualbox
 
 > docker-machine start default
+
 > eval "$(docker-machine env default)"
 
 2) CD into project and use SBT to build and publish to local Docker repo:
