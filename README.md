@@ -14,11 +14,22 @@ Http interface to take publish commands
 Send generated Kafka messages using Kafka producer
 
 
-Install docker, docker-machine and docker-compose
+Install docker, docker-machine and docker-compose. See docker docs on how to create machine in virtualbox
+https://docs.docker.com/machine/drivers/virtualbox/
 
-1) Connect to 'default' machine, see docker docs on how to create machine in virtualbox
+Create a VM called 'default'
+
+> docker-machine create --driver virtualbox default
+
+Or for a beefier machine
+
+> docker-machine create --driver virtualbox --virtualbox-memory "8192" --virtualbox-cpu-count "2" default
+
+Start up 'default' machine
 
 > docker-machine start default
+
+1) Connect to 'default' machine
 
 > eval "$(docker-machine env default)"
 
