@@ -49,3 +49,12 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
       - zookeeper
+
+  userservice:
+    image: userservice:1.0
+    links:
+      - "cassandra"
+      - "kafka"
+    depends_on:
+      - cassandra
+      - kafka
