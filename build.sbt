@@ -1,4 +1,6 @@
-name := "EventSourcingCluster"
+enablePlugins(JavaAppPackaging)
+
+name := "userservice"
 
 version := "1.0"
 
@@ -25,3 +27,6 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-http"                  % akkaHttpVersion,
   "com.typesafe.akka" %% "akka-stream-kafka"          % akkaKafkaVersion
 )
+
+packageName in Docker := "userservice"
+version in Docker     := "latest"

@@ -18,7 +18,7 @@ object UserShardingRegion {
     case cmd: String => (cmd, cmd)
   }
 
-  def shardResolver(numberOfShards: Int): ShardRegion.ExtractShardId = msg => msg match {
+  def shardResolver(numberOfShards: Int): ShardRegion.ExtractShardId = {
     case cmd: String => (math.abs(cmd.hashCode) % numberOfShards).toString
   }
 

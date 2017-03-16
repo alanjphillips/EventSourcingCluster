@@ -50,11 +50,21 @@ services:
     depends_on:
       - zookeeper
 
-  userservice:
-    image: userservice:1.0
+  userservice-seed-1:
+    image: userservice:latest
+    command: "-Dakka.remote.netty.tcp.hostname=userservice-seed-1"
     links:
-      - "cassandra"
+      - "cassandra-seed-1"
       - "kafka"
     depends_on:
-      - cassandra
+      - cassandra-seed-1
+      - kafka
+
+  userservice-node:
+    image: userservice:latest
+    links:
+      - "cassandra-seed-1"
+      - "kafka"
+    depends_on:
+      - cassandra-seed-1
       - kafka
