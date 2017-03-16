@@ -41,7 +41,7 @@ Start up 'default' machine
 
 > docker-compose up -d --no-recreate
 
-> docker-compose scale kafka=2 cassandra-node=2
+> docker-compose scale kafka=2 cassandra-node=2 userservice-node=5
 
 4) Connect to Cassandra and view persisted messages
 
