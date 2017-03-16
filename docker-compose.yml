@@ -11,8 +11,8 @@ services:
 
   cassandra-seed-1:
     image: cassandra
-    container_name: cassandra-seed-1
     environment:
+      CASSANDRA_LISTEN_ADDRESS: "cassandra-seed-1"
       CASSANDRA_BROADCAST_ADDRESS: "cassandra-seed-1"
     ports:
       - "7000"
