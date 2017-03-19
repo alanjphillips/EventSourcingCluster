@@ -8,6 +8,6 @@ object Boot extends App {
 
   val userRegion: ActorRef = UserShardingRegion.start(system, 10)
 
-  // Pass userRegion to Kafka Consumer flow where it will deal with incoming messages
+  val consumer = system.actorOf(KafkaConsumerActor.props(userRegion))
 
 }
