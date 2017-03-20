@@ -15,11 +15,11 @@ object UserShardingRegion {
   }
 
   def idExtractor: ShardRegion.ExtractEntityId = {
-    case cmd: String => (cmd, cmd)
+    case cmd: Command => (cmd.name, cmd)
   }
 
   def shardResolver(numberOfShards: Int): ShardRegion.ExtractShardId = {
-    case cmd: String => (math.abs(cmd.hashCode) % numberOfShards).toString
+    case cmd: Command => (math.abs(cmd.name.hashCode) % numberOfShards).toString
   }
 
 }

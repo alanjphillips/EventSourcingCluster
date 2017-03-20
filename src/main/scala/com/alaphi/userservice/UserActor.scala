@@ -1,6 +1,6 @@
 package com.alaphi.userservice
 
-import akka.actor.Props
+import akka.actor.{ActorLogging, Props}
 import akka.persistence.PersistentActor
 
 import scala.concurrent.duration._
@@ -8,7 +8,7 @@ import scala.concurrent.duration._
 case class Command(name: String)
 case class Event(name: String)
 
-class UserActor extends PersistentActor {
+class UserActor extends PersistentActor with ActorLogging {
 
   override def persistenceId: String = self.path.parent.name + "-" + self.path.name
 
@@ -23,6 +23,7 @@ class UserActor extends PersistentActor {
   val receiveCommand: Receive = {
     case cmd: Command =>
       persistAll(List(Event(cmd.name))) {
+        log.info(s"UserActor updating state for: ${cmd.name}")
         updateState
         // Send output Event here
       }
