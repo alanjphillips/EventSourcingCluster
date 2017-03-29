@@ -18,7 +18,7 @@ class KafkaConsumerActor(userRegion : ActorRef) extends Actor with ActorLogging 
 
   override def preStart(): Unit = {
     val consumerSettings = ConsumerSettings(system, new ByteArrayDeserializer, new StringDeserializer)
-      .withBootstrapServers("kafka:9092")
+      .withBootstrapServers("kafka-1:9092,kafka-2:9093,kafka-3:9094")
       .withGroupId("group1")
       .withProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest")
 

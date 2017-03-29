@@ -41,9 +41,15 @@ Start up 'default' machine
 
 > docker-compose up -d --no-recreate
 
-> docker-compose scale kafka=2 cassandra-node=2 userservice-node=5
+> docker-compose scale cassandra-node=2 userservice-node=5
 
-4) Connect to Cassandra and view persisted messages
+4) Connect to bash shell on kafka-1 host, then run:
+
+> kafka-topics.sh --zookeeper zookeeper:2181 --create --topic user_status_commands --partitions 3 --replication-factor 3
+
+This will create 10 Topic partitions that are spread amongst the 3 Kafka nodes. Each partition leader will have 2 replicas
+
+5) Connect to Cassandra and view persisted messages
 
 >  cqlsh 192.168.99.100 --cqlversion="3.4.4"
 
