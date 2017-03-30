@@ -45,9 +45,9 @@ Start up 'default' machine
 
 4) Connect to bash shell on kafka-1 host, then run:
 
-> kafka-topics.sh --zookeeper zookeeper:2181 --create --topic user_status_commands --partitions 3 --replication-factor 3
+> kafka-topics.sh --zookeeper zookeeper:2181 --create --topic user_status_commands --partitions 6 --replication-factor 3
 
-This will create 10 Topic partitions that are spread amongst the 3 Kafka nodes. Each partition leader will have 2 replicas
+This will create 6 Topic partitions that are spread amongst the 3 Kafka nodes. Each partition leader will have 2 replicas
 
 5) Connect to Cassandra and view persisted messages
 
